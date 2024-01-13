@@ -1,1 +1,1 @@
-# fintech-frontend
+# Python Django project
