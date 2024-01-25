@@ -1,13 +1,23 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Paylio - Money Transfer and Online Payments Dashboard HTML Template</title>
+
+    <link rel="shortcut icon" href="{% static 'assets/images/fav.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugin/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugin/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugin/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/arafat-font.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugin/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 
     <link rel="shortcut icon" href="{% static 'assets11/images/fav.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'assets1/css/bootstrap.min.css' %}">
@@ -21,16 +31,11 @@
 </head>
 
 <body>
-    <!-- start preloader -->
-    <!-- <div class="preloader" id="preloader"></div> -->
-    <!-- end preloader -->
 
-    <!-- Scroll To Top Start-->
     <a href="javascript:void(0)" class="scrollToTop"><i class="fas fa-angle-double-up"></i></a>
-    <!-- Scroll To Top End -->
 
-    <!-- header-section start -->
-    <header class="header-section body-collapse">
+     <!-- header-section start -->
+     <header class="header-section body-collapse">
         <div class="overlay">
             <div class="container-fruid">
                 <div class="row d-flex header-area">
@@ -206,39 +211,57 @@
                         </div>
                         <div class="sidebar-logo">
                             <!-- <a href="{% url 'account:dashboard' %}"><img src="{% static 'assets1/images/logo.png' %}" alt="logo"></a> -->
-                            <a href="{% url 'account:dashboard' %}"><img src="{% static 'assets1/images/finstack.JPEG' %}" class="logo1"  alt="logo" width="250" height="250" ></a>
-                        </div> 
+                            <a href="{% url 'account:dashboard' %}"><img src="{% static 'assets1/images/finstack.JPEG' %}" class="logo1"  alt="logo" width="200" height="200" ></a>
+                        </div>
                         <ul>
                             <li>
                                 <a href="{% url 'account:dashboard' %}">
                                     <img src="{% static 'assets1/images/icon/dashboard.png' %}" alt="Dashboard"> <span>Dashboard</span>
                                 </a>
                             </li>
-
-                             <!-- <img src="{% static 'assets1/images/avatar.png' %}" alt="User"> -->
-                             <!-- kyc.full_name -->
-                             <!-- {% if request.user.kyc.image.url %}
-                             <img style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;" src="{{ request.user.kyc.image.url }}" alt="image">
-                         {% else %}
-                             <img src="{% static 'assets1/images/default.jpg' %}"  style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" alt="">
-                         {% endif %} -->
-                         {% if request.user.kyc.full_name %}
                             <li>
                                 <a href="{% url 'core:transactions' %}">
                                     <img src="{% static 'assets1/images/icon/transactions.png' %}" alt="Transactions"> <span>Transactions</span>
                                 </a>
                             </li>
+                            <!-- <li>
+                                <a href="{% url 'core:search-account' %}">
+                                    <img src="{% static 'assets1/images/icon/pay.png' %}" alt="Pay"> <span>Pay</span>
+                                </a>
+                            </li> -->
+                            <!-- <li>
+                                <a href="{% url 'core:request-search-account' %}">
+                                    <img src="{% static 'assets1/images/icon/receive.png' %}" alt="Receive"> <span>Receive</span>
+                                </a>
+                            </li> -->
                              <li>
                                 <a href="{% url 'account:money-exchange' %}">
                                     <img src="{% static 'assets1/images/icon/exchange.png' %}" alt="Exchange"> <span>Exchange</span>
                                 </a>
                             </li> 
-                            {% else %}
-                            
-                            {% endif %} 
-
                             
                             <!-- Edit end -->
+
+                            <!-- <li>
+                                <a href="recipients.html">
+                                    <img src="{% static 'assets1/images/icon/recipients.png' %}" alt="Recipients"> <span>Recipients</span>
+                                </a>
+                            </li> -->
+                            <!-- <li>
+                                <a href="crypto.html">
+                                    <img src="{% static 'assets1/images/icon/crypto.png' %}" alt="Crypto"> <span>Crypto</span>
+                                </a>
+                            </li> -->
+                            <!-- <li>
+                                <a href="deposit-money.html">
+                                    <img src="{% static 'assets1/images/icon/deposit.png' %}" alt="Deposit"> <span>Deposit Money</span>
+                                </a>
+                            </li> -->
+                            <!-- <li>
+                                <a href="withdraw-money-step-1.html">
+                                    <img src="{% static 'assets1/images/icon/withdraw.png' %}" alt="Withdraw"> <span>Withdraw Money</span>
+                                </a>
+                            </li> -->
                         </ul>
                         <ul class="bottom-item">
                             <li class="active">
@@ -296,17 +319,21 @@
   
 {% endblock content %}
 
+
     
     <!--==================================================================-->
-    <script src="{% static 'assets1/js/jquery.min.js' %}"></script>
-    <script src="{% static 'assets1/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets1/js/jquery-ui.js' %}"></script>
-    <script src="{% static 'assets1/js/plugin/apexcharts.js' %}"></script>
-    <script src="{% static 'assets1/js/plugin/jquery.nice-select.min.js' %}"></script>
-    <script src="{% static 'assets1/js/plugin/waypoint.min.js' %}"></script>
-    <script src="{% static 'assets1/js/plugin/wow.min.js' %}"></script>
-    <script src="{% static 'assets1/js/plugin/plugin.js' %}"></script>
-    <script src="{% static 'assets1/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-ui.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/fontawesome.js' %}"></script>
+    <script src="{% static 'assets/js/plugin/slick.js' %}"></script>
+    <script src="{% static 'assets/js/plugin/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugin/counter.js' %}"></script>
+    <script src="{% static 'assets/js/plugin/waypoint.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugin/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugin/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugin/plugin.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
 </body>
 
 </html>

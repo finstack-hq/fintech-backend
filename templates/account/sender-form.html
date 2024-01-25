@@ -1,0 +1,381 @@
+{% extends "partials/dashboard-base.html" %}
+{% load static %}
+{% block content %}
+    <!-- Dashboard Section start -->
+    <head>
+        <style>
+            #id_image{
+                background-color: #432f9f;
+                /* border: 1px solid #e2e9f3; */
+                border-radius: 4px;
+                height: 50px;
+                width: 100%;
+                color: #ffffff;
+            }
+            #id_image::file-selector-button{
+                border: none;
+                border-radius: 7px;
+                color: 432f9f;
+                background-color: #ffffff;
+                /* border: 1px solid #595ef1bd; */
+                height: 30px;
+                cursor: pointer;
+                transition: all .25s ease-in;
+            }
+            #id_image::file-selector-button:hover,
+            #id_identity_type::file-selector-button:hover{
+                background-color: #fff;
+                color: #565A90;
+                transition: all .25s ease-in;
+            }
+    
+    
+            #id_identity_image{
+                background-color: #432f9f;
+                /* border: 1px solid #e2e9f3; */
+                border-radius: 4px;
+                height: 50px;
+                width: 100%;
+                color: #ffffff;
+            }
+            #id_identity_image::file-selector-button{
+                border: none;
+                border-radius: 7px;
+                color: 432f9f;
+                background-color: #ffffff;
+                /* border: 1px solid #595ef1bd; */
+                height: 30px;
+                cursor: pointer;
+                transition: all .25s ease-in;
+            }
+            #id_identity_image::file-selector-button:hover{
+                background-color: #fff;
+                color: #565A90;
+                transition: all .25s ease-in;
+            }
+    
+    
+    
+    
+            
+            #id_signature{
+                background-color: #432f9f;
+                /* border: 1px solid #e2e9f3; */
+                border-radius: 4px;
+                height: 50px;
+                width: 100%;
+                color: #ffffff;
+            }
+            #id_signature::file-selector-button{
+                border: none;
+                border-radius: 7px;
+                color: 432f9f;
+                background-color: #ffffff;
+                /* border: 1px solid #595ef1bd; */
+                height: 30px;
+                cursor: pointer;
+                transition: all .25s ease-in;
+            }
+            #id_signature::file-selector-button:hover{
+                background-color: #fff;
+                color: #565A90;
+                transition: all .25s ease-in;
+            }
+        </style>
+    </head>
+<section class="dashboard-section body-collapse account">
+    <div class="overlay pt-120">
+        <div class="container-fruid">
+            <div class="main-content">
+                <div class="row">
+
+                    <div class="col-xxl-1 col-xl-2 col-md-4">
+                        <!-- <div class="owner-details"> -->
+                            <!-- <div class="profile-area">
+                                <div class="profile-img">
+                                    <img src="{% static 'assets1/images/default.jpg' %}" style="border-radius: 50%; width: 100px; height: 100px; " alt="image">
+                                </div>
+                                <div class="name-area">
+                                    <h6>{{request.user.username|title}}</h6>
+                                    <p class="text-danger">{{ request.user.account.account_status|title }}</p>
+                                </div>
+                            </div> -->
+                            <!-- <div class="owner-info">
+                                <h1>User Sending Funds</h1>
+                                <ul>
+                                    <li>
+                                        <p>Account ID:</p>
+                                        <span class="mdr">{{ request.user.account.account_id }}</span>
+                                    </li>
+                                    <li>
+                                        <p>Joined:</p>
+                                        <span class="mdr">{{request.user.account.date|date:"d M, Y"}}</span>
+                                    </li>
+                                    <li>
+                                        <p>Confirm status:</p>
+                                        <span class="mdr">10%</span>
+                                    </li>
+                                </ul>
+                            </div> -->
+                            <!-- <div class="owner-action">
+                                <a href="{% url 'userauths:sign-out' %}">
+                                    <img src="{% static 'assets1/images/icon/logout.png' %}" alt="image">
+                                    Logout
+                                </a>
+                                <a href="javascript:void(0)" class="delete">
+                                    <img src="{% static 'assets1/images/icon/delete-2.png' %}" alt="image">
+                                    Delete Account
+                                </a>
+                            </div> -->
+                        <!-- </div> -->
+                    </div> 
+
+                    <div class="col-xxl-9 col-xl-8">
+                        <div class="tab-main">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active text-center" id="account-tab" data-bs-toggle="tab"
+                                        data-bs-target="#account" type="button" role="tab" aria-controls="account"
+                                        aria-selected="true">Originating Account Info</button>
+                                </li>
+                                
+                            </ul>
+                            <div class="tab-content mt-40">
+                                <div class="tab-pane fade show active" id="account" role="tabpanel"
+                                    aria-labelledby="account-tab">
+                                    <form method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <!-- <div class="upload-avatar">
+                                            <div class="avatar-left d-flex align-items-center">
+                                                <div class="profile-img">
+                                                    <img src="{% static 'assets1/images/default.jpg' %}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" alt="image">
+                                                </div>
+                                                <div class="instraction">
+                                                    <h6>Your Avatar</h6>
+                                                </div>
+                                            </div>
+                                            <div class="avatar-right">
+                                                {{form.image}}
+                                            </div>
+                                        </div> -->
+                                    
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-12">
+                                                <div class="single-input">
+                                                    <label for="fName">Your Whatapp Number with International Dialing Code</label>
+                                                   {{sendUserform.mobile}}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <label for="fName">Select Transaction Type:</label>
+                                                <div class="single-input">
+                                                   {{sendUserform.gender}}
+                                                </div>
+                                            </div>
+                                            
+                                            <br>  <br>  <br>  
+                                            <div class="col-md-12">
+                                                <label for="fName">Originating:</label>
+                                                <div class="single-input">
+                                                    {{sendUserform.marrital_status}}
+                                                </div>
+                                            </div>
+                                       
+
+                                            <!-- <div class="col-md-6">
+                                                <div class="single-input">
+                                                   {{form.gender}}
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="col-md-6">
+                                                <div class="single-input">
+                                                   {{form.marrital_status}}
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="col-md-6">
+                                                <div class="single-input">
+                                                   {{form.identity_type}}
+                                                </div>
+                                            </div> -->
+
+                                            <br>  <br>  <br>  
+                                            <div class="col-md-12">
+                                                <div class="single-input">
+                                                    <label for="fName">Other:</label>
+                                                   {{sendUserform.full_name}}
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                            <br><br>
+                                            <div class="col-md-12">
+                                                <div class="single-input">
+                                                    <label for="fName">Originating Account's Owner Name</label>
+                                                   {{sendUserform.full_name}}
+                                                </div>
+                                            </div>
+                                            
+                                           
+                                            <div class="col-md-12">
+                                                <div class="single-input">
+                                                    <label for="fName">Originating Account Number</label>
+                                                   {{sendUserform.account_number}}
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                            <div class="col-md-12">
+                                                
+                                                <button  class="btn-area mt-40">
+                                                    <a href="{% url 'account:receiver-form' %}" class="login cmn-btn w-100">Back</a>
+                                                </button>
+
+                                                <!-- <div class="btn-border"> -->
+                                                    <button class="cmn-btn" type="submit">Save</button>
+                                                <!-- </div>  -->
+
+                                                <button  class="btn-area mt-40">
+                                                    <a href="{% url 'account:receiver-form' %}" class="login cmn-btn w-100">Proceed</a>
+                                                </button>
+
+                                                <!-- <button type="submit" name="subscribe">Subscribe</button>
+                                                <button type="submit" name="unsubscribe">Unsubscribe</button> -->
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Dashboard Section end -->
+
+<!-- Add Card Popup start -->
+<div class="add-card">
+    <div class="container-fruid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="modal fade" id="addcardMod" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header justify-content-between">
+                                <h6>Add Card</h6>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <form action="#">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12">
+                                        <div class="single-input">
+                                            <label for="cardNumber">Card Number</label>
+                                            <input type="text" id="cardNumber" placeholder="5890 - 6858 - 6332 - 9843">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="single-input">
+                                            <label for="cardHolder">Card Holder</label>
+                                            <input type="text" id="cardHolder" placeholder="Alfred Davis">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single-input">
+                                            <label for="month">Month</label>
+                                            <input type="text" id="month" placeholder="12">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single-input">
+                                            <label for="year">Year</label>
+                                            <input type="text" id="year" placeholder="2025">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="btn-border w-100">
+                                            <button class="cmn-btn w-100">Add Card</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Card Popup start -->
+
+<!-- My Card Popup start -->
+<div class="transactions-popup mycard">
+    <div class="container-fruid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="modal fade" id="transactionsMod" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header justify-content-between">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <div class="main-content">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <h5>My Cards</h5>
+                                        <div class="icon-area">
+                                            <img src="{% static 'assets1/images/popup-card.png' %}" alt="image" class="w-100">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="right-area">
+                                            <div class="top-area d-flex align-items-center justify-content-between">
+                                                <div class="card-details d-flex align-items-center">
+                                                    <img src="{% static 'assets1/images/icon/mastercard.png' %}" alt="image">
+                                                    <span>5880 **** **** 8854</span>
+                                                </div>
+                                                <a href="javascript:void(0)">
+                                                    <i class="icon-h-edit"></i>
+                                                    Edit
+                                                </a>
+                                            </div>
+                                            <ul class="payment-details">
+                                                <li>
+                                                    <span>Card Type:</span>
+                                                    <span>Visa</span>
+                                                </li>
+                                                <li>
+                                                    <span>Card Holder:</span>
+                                                    <span>Alfred Davis</span>
+                                                </li>
+                                                <li>
+                                                    <span>Expires:</span>
+                                                    <span>12/19</span>
+                                                </li>
+                                                <li>
+                                                    <span>Card Number:</span>
+                                                    <span>5880 5087 3288 8854</span>
+                                                </li>
+                                                <li>
+                                                    <span>Total Balance:</span>
+                                                    <span>80,700.00</span>
+                                                </li>
+                                                <li>
+                                                    <span>Total Debt:</span>
+                                                    <span>8,250.00</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- My Card Popup start -->
+    {% endblock content %}

@@ -7,10 +7,9 @@ urlpatterns = [
     path("dashboard/", views.dashboard, name="dashboard"),
     path("", views.account, name="account"),
     path("kyc-reg/", views.kyc_registration, name="kyc-reg"),
-
-     path('kyc-reg/money-exchange.html', views.currency_data, name='money-exchange'),
+    path("sender-form/", views.sender_registration, name="sender-form"),
+    path("receiver-form/", views.receiver_registration, name="receiver-form"),
+    path('account/kyc-reg/money-exchange/', views.money_exchange_view, name='money-exchange'),
 ]
-
-
 
 

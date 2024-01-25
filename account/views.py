@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
-from account.models import KYC, Account
-from account.forms import KYCForm
+from account.models import KYC, Account, SENDUSER, RECEIVEUSER
+from account.forms import KYCForm, SENDERForm, RECEIVERForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from core.forms import CreditCardForm
 from core.models import CreditCard, Notification, Transaction
+from core.views import currency_data
 
-# from django.shortcuts import render
 import requests
 import json
 import os
@@ -60,6 +60,62 @@ def kyc_registration(request):
         "kyc": kyc,
     }
     return render(request, "account/kyc-form.html", context)
+
+@login_required
+def sender_registration(request):
+    user = request.user
+    account = Account.objects.get(user=user)
+
+    try:
+        senduser = SENDUSER.objects.get(user=user)
+    except:
+        senduser = None
+    
+    if request.method == "POST":
+        sendUserform = SENDERForm(request.POST, request.FILES, instance=senduser)
+        if sendUserform.is_valid():
+            new_form = sendUserform.save(commit=False)
+            new_form.user = user
+            new_form.account = account
+            new_form.save()
+            messages.success(request, "KYC Form submitted successfully, In review now.")
+            return redirect("account:account")
+    else:
+        sendUserform = SENDERForm(instance=senduser)
+    context = {
+        "account": account,
+        "sendUserform": sendUserform,
+        "senduser": senduser,
+    }
+    return render(request, "account/sender-form.html", context)
+
+@login_required
+def receiver_registration(request):
+    user = request.user
+    account = Account.objects.get(user=user)
+
+    try:
+       receiveUser = RECEIVEUSER.objects.get(user=user)
+    except:
+        receiveUser  = None
+
+    if request.method == "POST":
+        receiveUserform = RECEIVERForm(request.POST, request.FILES, instance=receiveUser )
+        if receiveUserform.is_valid():
+            new_form = receiveUserform.save(commit=False)
+            new_form.user = user
+            new_form.account = account
+            new_form.save()
+            messages.success(request, "KYC Form submitted successfully, In review now.")
+            return redirect("account:account")
+    else:
+        receiveUserform = RECEIVERForm(instance=receiveUser )
+    context = {
+        "account": account,
+        "receiveUserform": receiveUserform,
+        "receiveUser ": receiveUser ,
+    }
+    return render(request, "account/receiver-form.html", context)
 
 
 def dashboard(request):
@@ -120,23 +176,11 @@ def dashboard(request):
         'recent_recieved_transfer':recent_recieved_transfer,
     }
     return render(request, "account/dashboard.html", context)
-    
-#Motseki Start Rates conversion
-# def currency_data():
-def currency_data(request):
-    # Your code here
-
-    """ All countries currency data"""
-    module_dir = os.path.dirname(__file__)  # get current directory
-    file_path = os.path.join(module_dir, 'currencies.json')
-    with open(file_path, "r") as f:
-        currency_data = json.loads(f.read())
-    return currency_data
 
 
-def index(request):
-    
-    if request.method == "POST":
+
+def money_exchange_view(request):
+      if request.method == "POST":
 
         # Get data from the html form
         amount = float(request.POST.get('amount'))
@@ -167,8 +211,9 @@ def index(request):
             "currency_data":currency_data()
             }
 
+            # return render(request, "index.html", context)
             return render(request, "account/kyc-reg/money-exchange.html", context)
-        
-   
-    return render(request, "account/kyc-reg/money-exchange.html", {"currency_data":currency_data()})
-
+    
+    # return render(request, "core/index.html", {"currency_data":currency_data()})
+      return render(request, "account/kyc-reg/money-exchange.html", {"currency_data":currency_data()})
+    # return render(request, "account/kyc-reg/money-exchange.html")

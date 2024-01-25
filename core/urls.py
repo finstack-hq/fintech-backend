@@ -9,7 +9,8 @@
 
 from django.urls import path
 from core import views, transfer, transaction, payment_request, credit_card
-
+# from django.urls import path
+from .views import money_exchange_view
 
 app_name = "core"
 

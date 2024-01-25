@@ -12,15 +12,17 @@ ACCOUNT_STATUS = (
 )
 
 MARITAL_STATUS = (
-    ("married", "Married"),
-    ("single", "Single"),
-    ("other", "Other")
+    ("Bank", "Bank"),
+    ("Wallet", "Wallet"),
+    ("Memo Name", "Memo Name"),
+    ("Other", "Other")
 )
 
 GENDER = (
-    ("male", "Male"),
-    ("female", "Female"),
-    ("other", "Other")
+    ("Bank Transfer", "Bank Transfer"),
+    ("Cash Deposit", "Cash Deposit"),
+    ("Mobile Money", "Mobile Money"),
+    ("Other", "Other")
 )
 
 
@@ -88,6 +90,72 @@ class KYC(models.Model):
     
     class Meta:
         ordering = ['-date']
+
+class SENDUSER(models.Model):
+    id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    user =  models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    account =  models.OneToOneField(Account, on_delete=models.CASCADE, null=True, blank=True)
+    full_name = models.CharField(max_length=1000)
+    account_number = ShortUUIDField(unique=True,length=10, max_length=25, prefix="217", alphabet="1234567890") #2175893745837
+    image = models.ImageField(upload_to="kyc", default="default.jpg")
+    marrital_status = models.CharField(choices=MARITAL_STATUS, max_length=40)
+    gender = models.CharField(choices=GENDER, max_length=40)
+    identity_type = models.CharField(choices=IDENTITY_TYPE, max_length=140)
+    identity_image = models.ImageField(upload_to="kyc", null=True, blank=True)
+    date_of_birth = models.DateTimeField(auto_now_add=False)
+    signature = models.ImageField(upload_to="kyc")
+
+    # Address
+    country = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+
+    # Contact Detail
+    mobile = models.CharField(max_length=1000)
+    fax = models.CharField(max_length=1000)
+    date = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"{self.user}"    
+
+    
+    class Meta:
+        ordering = ['-date']
+
+
+class RECEIVEUSER(models.Model):
+    id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    user =  models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    account =  models.OneToOneField(Account, on_delete=models.CASCADE, null=True, blank=True)
+    full_name = models.CharField(max_length=1000)
+    image = models.ImageField(upload_to="kyc", default="default.jpg")
+    marrital_status = models.CharField(choices=MARITAL_STATUS, max_length=40)
+    gender = models.CharField(choices=GENDER, max_length=40)
+    identity_type = models.CharField(choices=IDENTITY_TYPE, max_length=140)
+    identity_image = models.ImageField(upload_to="kyc", null=True, blank=True)
+    date_of_birth = models.DateTimeField(auto_now_add=False)
+    signature = models.ImageField(upload_to="kyc")
+
+    # Address
+    country = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+
+    # Contact Detail
+    mobile = models.CharField(max_length=1000)
+    fax = models.CharField(max_length=1000)
+    date = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"{self.user}"    
+
+    
+    class Meta:
+        ordering = ['-date']
+
+
 
 
 
