@@ -33,7 +33,8 @@
                         <!-- <a class="navbar-brand" href="index.html">
                             <img src="{% static 'assets/images/logo.png' %}" class="logo" alt="logo">
                         </a>  -->
-                        <a class="navbar-brand" href="index.html">
+                        <!-- <a class="navbar-brand" href="index.html"> -->
+                        <a class="navbar-brand" href="/">
                             <!-- <img src="{% static 'assets/images/logo.png' %}" class="logo" alt="logo">  -->
                             <img src="{% static 'assets/images/finstack.JPEG' %}" class="logo1"  alt="logo" width="110" height="100" >
                         </a>
@@ -43,7 +44,7 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navbar-content">
                             <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                                <li class="nav-item dropdown main-navbar">
+                                <!-- <li class="nav-item dropdown main-navbar">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)"
                                         data-bs-toggle="dropdown" data-bs-auto-close="outside">Personal</a>
                                     <ul class="dropdown-menu main-menu shadow">
@@ -52,7 +53,7 @@
                                         <li><a class="nav-link" href="security.html">Security</a></li>
                                         <li><a class="nav-link" href="fees.html">Fees</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
                                 <li class="nav-item dropdown main-navbar">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)"
                                         data-bs-toggle="dropdown" data-bs-auto-close="outside">Business</a>
@@ -71,30 +72,32 @@
                                 </li>
                                 <li class="nav-item dropdown main-navbar">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                        data-bs-toggle="dropdown" data-bs-auto-close="outside">Company</a>
+                                        data-bs-toggle="dropdown" data-bs-auto-close="outside">Contact Us</a>
                                     <ul class="dropdown-menu main-menu shadow">
                                         <li><a class="nav-link" href="about-us.html">About Us</a></li>
-                                        <li><a class="nav-link" href="career.html">Career</a></li>
-                                        <li><a class="nav-link" href="career-details.html">Career Details</a></li>
-                                        <li class="dropend sub-navbar">
+                                        <li><a class="nav-link" href="career.html">Contact Form</a></li>
+                                        <li><a class="nav-link" href="career-details.html">Email Us</a></li>
+                                        <li><a class="nav-link" href="career-details.html">WhatsApp Us</a></li>
+                                        <li><a class="nav-link" href="career-details.html">Call Line</a></li>
+                                        <!-- <li class="dropend sub-navbar">
                                             <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
                                               data-bs-auto-close="outside">Blog</a>
                                             <ul class="dropdown-menu sub-menu shadow">
                                                 <li><a class="nav-link" href="blog.html">Blog</a></li>
                                                 <li><a class="nav-link" href="blog-details.html">Blog Details</a></li>
                                             </ul>
-                                        </li>
-                                        <li><a class="nav-link" href="error.html">Error</a></li>
+                                        </li> -->
+                                        <!-- <li><a class="nav-link" href="error.html">Error</a></li> -->
                                     </ul>
                                 </li>
-                                <li class="nav-item dropdown main-navbar">
+                                <!-- <li class="nav-item dropdown main-navbar">
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)"
                                         data-bs-toggle="dropdown" data-bs-auto-close="outside">Help</a>
                                     <ul class="dropdown-menu main-menu shadow">
                                         <li><a class="nav-link" href="help-center.html">Help Center</a></li>
                                         <li><a class="nav-link" href="help-center-category.html">Help Category</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
                             </ul>
                             <div class="right-area header-action d-flex align-items-center max-un">
                                 {% if request.user.is_authenticated %}

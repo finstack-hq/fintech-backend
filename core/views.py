@@ -39,7 +39,9 @@ def money_exchange_view(request):
         d = requests.get(url).json()
 
         # Converter
-        if d["result"] == "success":
+        # if d["result"] == "success":
+        if d.json()["result"] == "success":
+
             
             # Get currency exchange of the target
             ex_target =  d["rates"][currency_to]
@@ -76,7 +78,7 @@ def index(request):
         currency_from = request.POST.get("currency_from")
         currency_to = request.POST.get("currency_to")
 
-        # Get currency exchange rates
+        # Get currency exchange rates 
         url = f"https://open.er-api.com/v6/latest/{currency_from}"
         d = requests.get(url).json()
 

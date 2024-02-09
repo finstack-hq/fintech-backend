@@ -7,10 +7,13 @@ from core.forms import CreditCardForm
 from core.models import CreditCard, Notification, Transaction
 from core.views import currency_data
 
+from django.http import JsonResponse
+
 import requests
 import json
 import os
 
+       
 
 
 # @login_required
@@ -67,27 +70,27 @@ def sender_registration(request):
     account = Account.objects.get(user=user)
 
     try:
-        senduser = SENDUSER.objects.get(user=user)
+        sent = SENDUSER.objects.get(user=user)
     except:
-        senduser = None
+        sent = None
     
     if request.method == "POST":
-        sendUserform = SENDERForm(request.POST, request.FILES, instance=senduser)
-        if sendUserform.is_valid():
-            new_form = sendUserform.save(commit=False)
+        form = SENDERForm(request.POST, request.FILES, instance=sent)
+        if form.is_valid():
+            new_form = form.save(commit=False)
             new_form.user = user
             new_form.account = account
             new_form.save()
-            messages.success(request, "KYC Form submitted successfully, In review now.")
+            messages.success(request, "Sender Form submitted successfully, In review now.")
             return redirect("account:account")
     else:
-        sendUserform = SENDERForm(instance=senduser)
+        form = SENDERForm(instance=sent)
     context = {
         "account": account,
-        "sendUserform": sendUserform,
-        "senduser": senduser,
-    }
+        "form": form,
+        "sent": sent   }
     return render(request, "account/sender-form.html", context)
+
 
 @login_required
 def receiver_registration(request):
@@ -95,25 +98,25 @@ def receiver_registration(request):
     account = Account.objects.get(user=user)
 
     try:
-       receiveUser = RECEIVEUSER.objects.get(user=user)
+        receive = RECEIVEUSER.objects.get(user=user)
     except:
-        receiveUser  = None
-
+        receive = None
+    
     if request.method == "POST":
-        receiveUserform = RECEIVERForm(request.POST, request.FILES, instance=receiveUser )
-        if receiveUserform.is_valid():
-            new_form = receiveUserform.save(commit=False)
+        form = RECEIVERForm(request.POST, request.FILES, instance=receive)
+        if form.is_valid():
+            new_form = form.save(commit=False)
             new_form.user = user
             new_form.account = account
             new_form.save()
-            messages.success(request, "KYC Form submitted successfully, In review now.")
+            messages.success(request, "Receiver Form submitted successfully, In review now.")
             return redirect("account:account")
     else:
-        receiveUserform = RECEIVERForm(instance=receiveUser )
+        form = RECEIVERForm(instance=receive)
     context = {
         "account": account,
-        "receiveUserform": receiveUserform,
-        "receiveUser ": receiveUser ,
+        "form": form,
+        "receive": receive,
     }
     return render(request, "account/receiver-form.html", context)
 
@@ -179,6 +182,9 @@ def dashboard(request):
 
 
 
+
+
+
 def money_exchange_view(request):
       if request.method == "POST":
 
@@ -187,8 +193,9 @@ def money_exchange_view(request):
         currency_from = request.POST.get("currency_from")
         currency_to = request.POST.get("currency_to")
 
-        # Get currency exchange rates
+        # Get currency exchange rates http://127.0.0.1:8000/drinks
         url = f"https://open.er-api.com/v6/latest/{currency_from}"
+        # url = f"http://127.0.0.1:8000/drinks/{currency_from}"
         d = requests.get(url).json()
 
         # Converter

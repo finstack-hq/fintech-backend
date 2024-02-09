@@ -19,6 +19,7 @@ from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
+# from drinks import views
 
 from core import views
 
@@ -27,6 +28,8 @@ urlpatterns = [
      path("", include("core.urls")),
     path("user/", include("userauths.urls")),
     path("account/", include("account.urls")), 
+    path("drinks/", include("drinks.urls")), 
+    #  path("drinks/", views.drink_list),
 ]
 
 

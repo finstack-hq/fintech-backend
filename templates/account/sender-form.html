@@ -88,8 +88,7 @@
         <div class="container-fruid">
             <div class="main-content">
                 <div class="row">
-
-                    <div class="col-xxl-1 col-xl-2 col-md-4">
+                    <div class="col-xxl-3 col-xl-2 col-md-6">
                         <!-- <div class="owner-details"> -->
                             <!-- <div class="profile-area">
                                 <div class="profile-img">
@@ -101,7 +100,6 @@
                                 </div>
                             </div> -->
                             <!-- <div class="owner-info">
-                                <h1>User Sending Funds</h1>
                                 <ul>
                                     <li>
                                         <p>Account ID:</p>
@@ -128,15 +126,14 @@
                                 </a>
                             </div> -->
                         <!-- </div> -->
-                    </div> 
-
+                    </div>
                     <div class="col-xxl-9 col-xl-8">
                         <div class="tab-main">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active text-center" id="account-tab" data-bs-toggle="tab"
                                         data-bs-target="#account" type="button" role="tab" aria-controls="account"
-                                        aria-selected="true">Originating Account Info</button>
+                                        aria-selected="true">Sender Registration Form</button>
                                 </li>
                                 
                             </ul>
@@ -160,91 +157,416 @@
                                         </div> -->
                                     
                                         <div class="row justify-content-center">
+                                            <!-- <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <label for="fName">Full Name</label>
+                                                   {{form.full_name}}
+                                                </div>
+                                            </div> -->
+                                            
                                             <div class="col-md-12">
                                                 <div class="single-input">
                                                     <label for="fName">Your Whatapp Number with International Dialing Code</label>
-                                                   {{sendUserform.mobile}}
+                                                   {{form.mobile}}
                                                 </div>
                                             </div>
+                                            <!-- <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <label for="fName">Country</label>
+                                                   {{form.country}}
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <label for="fName">State</label>
+                                                   {{form.state}}
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <label for="fName">City</label>
+                                                   {{form.city}}
+                                                </div>
+                                            </div> -->
 
+                                            <!-- <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <label for="fName">BVN</label>
+                                                   {{form.city}}
+                                                </div>
+                                            </div> -->
+
+                                            <!-- <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <label for="fName">Fax</label>
+                                                   {{form.fax}}
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="col-md-12">
+                                                <div class="single-input">
+                                                    <label for="fName">Select Transaction Type:</label>
+                                                   {{form.date_of_birth}}
+                                                </div>
+                                            </div> -->
                                             <div class="col-md-12">
                                                 <label for="fName">Select Transaction Type:</label>
                                                 <div class="single-input">
-                                                   {{sendUserform.gender}}
+                                                   {{form.transaction_type}}
                                                 </div>
                                             </div>
-                                            
-                                            <br>  <br>  <br>  
+
+                                            <br>  <br>  <br> 
+
                                             <div class="col-md-12">
                                                 <label for="fName">Originating:</label>
                                                 <div class="single-input">
-                                                    {{sendUserform.marrital_status}}
+                                                   {{form.transaction_origin}}
                                                 </div>
                                             </div>
-                                       
 
-                                            <!-- <div class="col-md-6">
+                                            <br>  <br>  <br> 
+
+                                            <div class="col-md-12">
+                                                <label for="fName">Other:</label>
                                                 <div class="single-input">
-                                                   {{form.gender}}
+                                                   {{form.other}}
                                                 </div>
-                                            </div> -->
-                                            <!-- <div class="col-md-6">
+                                            </div>
+
+
+                                            <div class="col-md-12">
                                                 <div class="single-input">
-                                                   {{form.marrital_status}}
+                                                    <label for="fName">Full Name</label>
+                                                   {{form.full_name}}
                                                 </div>
-                                            </div> -->
-                                            <!-- <div class="col-md-6">
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="single-input">
+                                                    <label for="fName">Originating Account Number</label>
+                                                   {{form.account_number}}
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-md-4">
                                                 <div class="single-input">
                                                    {{form.identity_type}}
                                                 </div>
                                             </div> -->
-
-                                            <br>  <br>  <br>  
-                                            <div class="col-md-12">
+                                            <!-- <div class="col-md-12 " style="padding-top: 50px;">
                                                 <div class="single-input">
-                                                    <label for="fName">Other:</label>
-                                                   {{sendUserform.full_name}}
-                                                </div>
-                                            </div>
-                                            </div>
+                                                    <label for="fName">Upload Selfie Image</label>
 
+                                                    {{form.identity_image}}
+                                                    {% if kyc.identity_image %}
+                                                        <img src="{{ kyc.identity_image.url }}" style="width: 100%; height: 200px; border-radius: 10px; object-fit: cover; padding-top: 10px;" alt="">
+                                                    {% endif %}
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="col-md-6" style="padding-top: 50px;">
+                                                <div class="single-input">
+                                                    <label for="fName">Upload Identity Front Image</label>
+
+                                                    {{form.signature}}
+                                                    {% if kyc.signature %}
+                                                        <img src="{{ kyc.signature.url }}" style="width: 100%; height: 200px; border-radius: 10px; object-fit: cover; padding-top: 10px;" alt="">
+                                                    {% endif %}
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="col-md-6" style="padding-top: 50px;">
+                                                <div class="single-input">
+                                                    <label for="fName">Upload Identity Back Image</label>
+
+                                                    {{form.signature}}
+                                                    {% if kyc.signature %}
+                                                        <img src="{{ kyc.signature.url }}" style="width: 100%; height: 200px; border-radius: 10px; object-fit: cover; padding-top: 10px;" alt="">
+                                                    {% endif %}
+                                                </div>
+                                            </div> -->
                                             <br><br>
-                                            <div class="col-md-12">
+
+
+
+
+
+
+
+
+<!--                                             
+                                            <div class="col-md-6">
                                                 <div class="single-input">
-                                                    <label for="fName">Originating Account's Owner Name</label>
-                                                   {{sendUserform.full_name}}
+                                                    <label for="email">Email</label>
+                                                    <div class="row input-status d-flex align-items-center">
+                                                        <div class="col-6">
+                                                            <input type="text" id="email" placeholder="alfred6598@gmail.com">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <span class="pending">
+                                                                <img src="{% static 'assets1/images/icon/pending.png' %}" alt="icon">
+                                                                E-mail confirmation in pending
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
+                                                <div class="single-input">
+                                                    <label for="phone">Phone</label>
+                                                    <div class="row input-status d-flex align-items-center">
+                                                        <div class="col-6">
+                                                            <input type="text" id="phone" placeholder="(316) 555-0116">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <span class="confirm">
+                                                                <img src="{% static 'assets1/images/icon/confirm.png' %}" alt="icon">
+                                                                Phone number confirm
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="single-input file">
+                                                    <label>ID Confirmation documents</label>
+                                                    <div class="row input-status d-flex align-items-center">
+                                                        <div class="col-6">
+                                                            <div class="file-upload">
+                                                                <div class="right-area">
+                                                                    <label class="file">
+                                                                        <input type="file">
+                                                                        <span class="file-custom"></span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <span class="notconfirm">
+                                                                <img src="{% static 'assets1/images/icon/not-confirm.png' %}" alt="icon">
+                                                                Person not confirmed
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
                                             
-                                           
                                             <div class="col-md-12">
-                                                <div class="single-input">
-                                                    <label for="fName">Originating Account Number</label>
-                                                   {{sendUserform.account_number}}
+                                                <div class="btn-border">
+                                                    <button class="cmn-btn" type="submit">Submit Sender Details</button>
+
+                                                    <button  class="btn-area mt-40">
+                                                        <a href="{% url 'account:receiver-form' %}" class="login cmn-btn w-100">Proceed</a>
+                                                    </button>
                                                 </div>
-                                            </div>
-                                            <br><br>
-                                            <div class="col-md-12">
-                                                
-                                                <button  class="btn-area mt-40">
-                                                    <a href="{% url 'account:receiver-form' %}" class="login cmn-btn w-100">Back</a>
-                                                </button>
-
-                                                <!-- <div class="btn-border"> -->
-                                                    <button class="cmn-btn" type="submit">Save</button>
-                                                <!-- </div>  -->
-
-                                                <button  class="btn-area mt-40">
-                                                    <a href="{% url 'account:receiver-form' %}" class="login cmn-btn w-100">Proceed</a>
-                                                </button>
-
-                                                <!-- <button type="submit" name="subscribe">Subscribe</button>
-                                                <button type="submit" name="unsubscribe">Unsubscribe</button> -->
                                             </div>
                                         </div>
                                     </form>
                                 </div>
+                                <div class="tab-pane fade" id="security" role="tabpanel"
+                                    aria-labelledby="security-tab">
+                                    <div class="single-content authentication d-flex align-items-center justify-content-between">
+                                        <div class="left">
+                                            <h5>Two Factor Authentication</h5>
+                                            <p>Two-Factor Authentication (2FA) can be used to help protect your account</p>
+                                        </div>
+                                        <div class="right">
+                                            <button>Enable</button>
+                                        </div>
+                                    </div>
+                                    <div class="change-pass mb-40">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <h5>Change Password</h5>
+                                                <p>You can always change your password for security reasons or reset your password in case you forgot it.</p>
+                                                <a href="javascript:void(0)">Forgot password?</a>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <form action="#">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-md-12">
+                                                            <div class="single-input">
+                                                                <label for="current-password">Current password</label>
+                                                                <input type="text" id="current-password" placeholder="Current password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="single-input">
+                                                                <label for="new-password">New password</label>
+                                                                <input type="text" id="new-password" placeholder="New password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="single-input">
+                                                                <label for="confirm-password">Confirm New password</label>
+                                                                <input type="text" id="confirm-password" placeholder="Confirm New password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="btn-border w-100">
+                                                                <button class="cmn-btn w-100">Update password</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-content additional-security">
+                                        <h5>Additional security</h5>
+                                        <div class="single-setting">
+                                            <div class="left">
+                                                <h6>SMS recovery</h6>
+                                                <p>Number ending with 1234</p>
+                                            </div>
+                                            <div class="right">
+                                                <button class="active">Disable SMS</button>
+                                            </div>
+                                        </div>
+                                        <div class="single-setting">
+                                            <div class="left">
+                                                <h6>Autheticator App</h6>
+                                                <p>Google Authenticator</p>
+                                            </div>
+                                            <div class="right">
+                                                <button>Configure</button>
+                                            </div>
+                                        </div>
+                                        <div class="single-setting">
+                                            <div class="left">
+                                                <h6>SSL Certificate</h6>
+                                                <p>Secure Sockets Layer</p>
+                                            </div>
+                                            <div class="right">
+                                                <button>Configure</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-content your-devices">
+                                        <div class="head-item d-flex align-items-center justify-content-between">
+                                            <h5>Your devices</h5>
+                                            <a href="javascript:void(0)">Log out on all devices</a>
+                                        </div>
+                                        <div class="single-setting">
+                                            <div class="left">
+                                                <div class="icon-area">
+                                                    <img src="{% static 'assets1/images/icon/iphone.png' %}" alt="icon">
+                                                </div>
+                                                <div class="text-area">
+                                                    <h6>Iphone 13 Pro Max</h6>
+                                                    <p>New York City · June 20 at 14:00</p>
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                                <button>Log out</button>
+                                            </div>
+                                        </div>
+                                        <div class="single-setting">
+                                            <div class="left">
+                                                <div class="icon-area">
+                                                    <img src="{% static 'assets1/images/icon/ipad.png' %}" alt="icon">
+                                                </div>
+                                                <div class="text-area">
+                                                    <h6>iPad Pro</h6>
+                                                    <p>New York City · June 20 at 14:00</p>
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                                <button>Log out</button>
+                                            </div>
+                                        </div>
+                                        <div class="single-setting">
+                                            <div class="left">
+                                                <div class="icon-area">
+                                                    <img src="{% static 'assets1/images/icon/imac.png' %}" alt="icon">
+                                                </div>
+                                                <div class="text-area">
+                                                    <h6>iMac OSX</h6>
+                                                    <p>New York City · June 20 at 14:00</p>
+                                                </div>
+                                            </div>
+                                            <div class="right">
+                                                <button>Log out</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane pb-120 fade" id="payment" role="tabpanel"
+                                    aria-labelledby="payment-tab">
+                                    <div class="card-area">
+                                        <h6>Linked Payment system</h6>
+                                        <div class="card-content d-flex flex-wrap">
+                                            <div class="single-card">
+                                                <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#transactionsMod">
+                                                    <img src="{% static 'assets1/images/visa-card.png' %}" alt="image" class="w-100">
+                                                </button>
+                                            </div>
+                                            <div class="single-card">
+                                                <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#transactionsMod">
+                                                    <img src="{% static 'assets1/images/paylio-card.png' %}" alt="image" class="w-100">
+                                                </button>
+                                            </div>
+                                            <div class="single-card">
+                                                <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#transactionsMod">
+                                                    <img src="{% static 'assets1/images/paypal-card.png' %}" alt="image" class="w-100">
+                                                </button>
+                                            </div>
+                                            <div class="single-card">
+                                                <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#transactionsMod">
+                                                    <img src="{% static 'assets1/images/blockchain-card.png' %}" alt="image" class="w-100">
+                                                </button>
+                                            </div>
+                                            <div class="single-card">
+                                                <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#addcardMod">
+                                                    <img src="{% static 'assets1/images/add-new.png' %}" alt="image" class="w-100">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="notification" role="tabpanel"
+                                    aria-labelledby="notification-tab">
 
+                                    <div class="notification-single">
+                                        <h6>Announcements</h6>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <div class="notification-single">
+                                        <h6>Send payment</h6>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <div class="notification-single">
+                                        <h6>Receive a payment</h6>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <div class="notification-single">
+                                        <h6>Request payment</h6>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <div class="notification-single">
+                                        <h6>Have a problem with a payment</h6>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <div class="notification-single">
+                                        <h6>Special Offers</h6>
+                                        <label class="switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

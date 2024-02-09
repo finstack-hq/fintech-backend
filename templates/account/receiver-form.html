@@ -88,8 +88,7 @@
         <div class="container-fruid">
             <div class="main-content">
                 <div class="row">
-
-                    <div class="col-xxl-1 col-xl-2 col-md-4">
+                    <div class="col-xxl-3 col-xl-2 col-md-6">
                         <!-- <div class="owner-details">
                             <div class="profile-area">
                                 <div class="profile-img">
@@ -101,7 +100,6 @@
                                 </div>
                             </div>
                             <div class="owner-info">
-                                <h1>User Receiving Funds</h1>
                                 <ul>
                                     <li>
                                         <p>Account ID:</p>
@@ -128,16 +126,14 @@
                                 </a>
                             </div>
                         </div> -->
-                    </div> 
-
-
+                    </div>
                     <div class="col-xxl-9 col-xl-8">
                         <div class="tab-main">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active text-center" id="account-tab" data-bs-toggle="tab"
-                                        data-bs-target="#account" type="button" role="tab" aria-controls="account"
-                                        aria-selected="true">Receiving Account Info</button>
+                                        data-bs-target="#account" type="button" role="tab" aria-controls="account" 
+                                        aria-selected="true">Receiver Registration Form</button>
                                 </li>
                                 
                             </ul>
@@ -153,42 +149,53 @@
                                                 </div>
                                                 <div class="instraction">
                                                     <h6>Your Avatar</h6>
+                                                
                                                 </div>
                                             </div>
                                             <div class="avatar-right">
                                                 {{form.image}}
                                             </div>
                                         </div> -->
-                                    
-                                        <div class="row justify-content-center">
-                                            <div class="col-md-12">
-                                                <label for="fName">Select Transaction Type:</label>
-                                                <div class="single-input">
-                                                   {{receiveUserform.gender}}
-                                                </div>
-                                            </div>
-                                            
-                                            <br>  <br>  <br>  
-                                            <div class="col-md-12">
-                                                <label for="fName">Originating:</label>
-                                                <div class="single-input">
-                                                    {{receiveUserform.marrital_status}}
-                                                </div>
-                                            </div>
-                                            <br>  <br>  <br>  
-                                            <div class="col-md-12">
-                                                <div class="single-input">
-                                                    <label for="fName">Receiving Account's Owner Name</label>
-                                                   {{receiveUserform.full_name}}
-                                                </div>
-                                            </div>
 
-                                            <div class="col-md-12">
-                                                <div class="single-input">
-                                                    <label for="fName">Receiving Account Number</label>
-                                                   {{receiveUserform.full_name}}
-                                                </div>
+                                        <div class="col-md-12">
+                                            <label for="fName">Select Transaction Type:</label>
+                                            <div class="single-input">
+                                               {{form.transaction_type}}
                                             </div>
+                                        </div>
+
+                                        <br>  <br>  <br> 
+
+                                        <div class="col-md-12">
+                                            <label for="fName">Originating:</label>
+                                            <div class="single-input">
+                                               {{form.transaction_origin}}
+                                            </div>
+                                        </div>
+
+                                        <br>  <br>  <br> 
+
+                                        <div class="col-md-12">
+                                            <div class="single-input">
+                                                <label for="fName">Receiving Account's Owner Name</label>
+                                                {{form.full_name}}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="single-input">
+                                                <label for="fName">Receiving Account Number</label>
+                                               {{form.account_number}}
+                                            </div>
+                                        </div>
+                                    
+                                        <!-- <div class="row justify-content-center">
+                                            <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <label for="fName">Full Name</label>
+                                                   {{form.full_name}}
+                                                </div>
+                                            </div> -->
                                             
                                             <!-- <div class="col-md-6">
                                                 <div class="single-input">
@@ -214,13 +221,21 @@
                                                    {{form.city}}
                                                 </div>
                                             </div> -->
+
+                                            <!-- <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <label for="fName">BVN</label>
+                                                   {{form.city}}
+                                                </div>
+                                            </div> -->
+
                                             <!-- <div class="col-md-6">
                                                 <div class="single-input">
                                                     <label for="fName">Fax</label>
                                                    {{form.fax}}
                                                 </div>
                                             </div> -->
-                                            <!-- <div class="col-md-12">
+                                            <!-- <div class="col-md-6">
                                                 <div class="single-input">
                                                     <label for="fName">Date Of Birth</label>
                                                    {{form.date_of_birth}}
@@ -243,17 +258,27 @@
                                             </div> -->
                                             <div class="col-md-12 " style="padding-top: 50px;">
                                                 <div class="single-input">
-                                                    <label for="fName">Upload Alipay/WebChat QR Code</label>
+                                                    <label for="fName">Upload Alipay/WeChat QR Code</label>
 
-                                                    {{receiveUserform.identity_image}}
+                                                    {{form.identity_image}}
                                                     {% if kyc.identity_image %}
-                                                        <img src="{{ kyc.identity_image.url }}" style="width: 100%; height: 200px; border-radius: 10px; object-fit: cover; padding-top: 10px;" alt="">
+                                                        <img src="{{ receiver.identity_image.url }}" style="width: 100%; height: 200px; border-radius: 10px; object-fit: cover; padding-top: 10px;" alt="">
                                                     {% endif %}
                                                 </div>
                                             </div>
                                             <!-- <div class="col-md-6" style="padding-top: 50px;">
                                                 <div class="single-input">
-                                                    <label for="fName">Select Signature Image</label>
+                                                    <label for="fName">Upload Identity Front Image</label>
+
+                                                    {{form.signature}}
+                                                    {% if kyc.signature %}
+                                                        <img src="{{ kyc.signature.url }}" style="width: 100%; height: 200px; border-radius: 10px; object-fit: cover; padding-top: 10px;" alt="">
+                                                    {% endif %}
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="col-md-6" style="padding-top: 50px;">
+                                                <div class="single-input">
+                                                    <label for="fName">Upload Identity Back Image</label>
 
                                                     {{form.signature}}
                                                     {% if kyc.signature %}
@@ -328,23 +353,15 @@
                                             </div> -->
                                             
                                             <div class="col-md-12">
-                                                
-                                                <button class="btn-area mt-40">
-                                                    <a href="{% url 'account:receiver-form' %}" class="login cmn-btn w-100">Back</a>
-                                                </button>
-
-                                                 <!-- <div class="btn-border"> -->
-                                                    <button class="cmn-btn" type="submit">Save</button>
-                                                <!-- </div>  -->
-
-                                                <button class="btn-area mt-40">
-                                                    <a href="{% url 'account:receiver-form' %}" class="login cmn-btn w-100">Proceed</a>
-                                                </button>
+                                                <div class="btn-border">
+                                                    <button class="cmn-btn" type="submit">Submit Receiver Info</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="tab-pane fade" id="security" role="tabpanel"
+
+                                <!-- <div class="tab-pane fade" id="security" role="tabpanel"
                                     aria-labelledby="security-tab">
                                     <div class="single-content authentication d-flex align-items-center justify-content-between">
                                         <div class="left">
@@ -471,8 +488,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="tab-pane pb-120 fade" id="payment" role="tabpanel"
+                                </div> -->
+
+                                <!-- <div class="tab-pane pb-120 fade" id="payment" role="tabpanel"
                                     aria-labelledby="payment-tab">
                                     <div class="card-area">
                                         <h6>Linked Payment system</h6>
@@ -504,7 +522,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
+<!-- 
                                 <div class="tab-pane fade" id="notification" role="tabpanel"
                                     aria-labelledby="notification-tab">
 
@@ -550,7 +569,8 @@
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
-                                </div>
+                                </div> -->
+
                             </div>
                         </div>
                     </div>
@@ -562,7 +582,7 @@
 <!-- Dashboard Section end -->
 
 <!-- Add Card Popup start -->
-<div class="add-card">
+<!-- <div class="add-card">
     <div class="container-fruid">
         <div class="row">
             <div class="col-lg-6">
@@ -612,11 +632,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Add Card Popup start -->
 
 <!-- My Card Popup start -->
-<div class="transactions-popup mycard">
+<!-- <div class="transactions-popup mycard">
     <div class="container-fruid">
         <div class="row">
             <div class="col-lg-6">
@@ -682,6 +702,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- My Card Popup start -->
     {% endblock content %}

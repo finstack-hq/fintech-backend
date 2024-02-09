@@ -52,6 +52,7 @@ ALLOWED_HOSTS = [
    '*',
    'https://web-production-841ff.up.railway.app/',
    '127.0.0.1',
+   'http://127.0.0.1:8000',
 ]
 
 
@@ -68,11 +69,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
     'django.contrib.humanize',
+    'rest_framework',
 
     #Custom Apps
     'core',
     'userauths',
     'account',
+    'drinks',
 ]
 
 MIDDLEWARE = [
