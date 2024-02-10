@@ -1,7 +1,8 @@
 [
     {"cc":"EUR","symbol":"\u20ac","name":"European Euro"},
     {"cc":"GBP","symbol":"\u00a3","name":"British pound"},
-    {"cc":"USD","symbol":"$","name":"United States dollar"}
+    {"cc":"USD","symbol":"$","name":"United States dollar"},
+    {"cc":"NGN","symbol":"N","name":"Nigerian Naira"}
   ]
 
 
