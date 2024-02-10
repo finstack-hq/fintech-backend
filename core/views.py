@@ -79,14 +79,12 @@ def index(request):
         currency_to = request.POST.get("currency_to")
 
         # Get currency exchange rates 
-        url = f"https://open.er-api.com/v6/latest/{currency_from}"
-        d = requests.get(url).json()
-
+        url = f"https://paylio.wiredmartians.com/api/v1/rates/{currency_from}"
+        response = requests.get(url).json()
         # Converter
-        if d["result"] == "success":
-            
+        if response:
             # Get currency exchange of the target
-            ex_target =  d["rates"][currency_to]
+            ex_target =  response["rates"][currency_to]
 
             # Mltiply by the amount
             result = ex_target * amount
