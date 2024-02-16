@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from account.models import KYC, Account, SENDUSER, RECEIVEUSER
-from account.forms import KYCForm, SENDERForm, RECEIVERForm
+from account.models import KYC, Account, SENDUSER, RECEIVEUSER, CURRENCY_CONVERTOR
+from account.forms import KYCForm, SENDERForm, RECEIVERForm, CURRENCY_CONVERTOR_Form
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from core.forms import CreditCardForm
@@ -121,6 +121,35 @@ def receiver_registration(request):
     return render(request, "account/receiver-form.html", context)
 
 
+@login_required
+def convert_registration(request):
+    user = request.user
+    account = Account.objects.get(user=user)
+
+    try:
+        convert = CURRENCY_CONVERTOR.objects.get(user=user)
+    except:
+        convert = None
+    
+    if request.method == "POST":
+        form = CURRENCY_CONVERTOR_Form(request.POST, request.FILES, instance=convert)
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.user = user
+            new_form.account = account
+            new_form.save()
+            messages.success(request, "Convertion Form submitted successfully, In review now.")
+            return redirect("account:account")
+    else:
+        form = CURRENCY_CONVERTOR_Form(instance=convert)
+    context = {
+        "account": account,
+        "form": form,
+        "convert": convert   }
+    return render(request, "account/convert-reg.html", context)
+
+
+
 def dashboard(request):
     if request.user.is_authenticated:
         try:
@@ -183,10 +212,19 @@ def dashboard(request):
 
 
 
-
+@login_required
+# def money_exchange_view(request):
 
 def money_exchange_view(request):
-      if request.method == "POST":
+     user = request.user
+     account = Account.objects.get(user=user)
+
+     try:
+        sent = SENDUSER.objects.get(user=user)
+     except:
+        sent = None
+
+     if request.method == "POST":
 
         # Get data from the html form
         amount = float(request.POST.get('amount'))
@@ -197,6 +235,21 @@ def money_exchange_view(request):
         url = f"https://open.er-api.com/v6/latest/{currency_from}"
         # url = f"http://127.0.0.1:8000/drinks/{currency_from}"
         d = requests.get(url).json()
+
+
+        form = CURRENCY_CONVERTOR_Form(request.POST)
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.user = user
+            new_form.account = account
+            new_form.amount = float(request.POST.get('amount'))
+            new_form.currency_from = request.POST.get("currency_from")
+            new_form.currency_to = request.POST.get("currency_to")
+            new_form.save()
+            messages.success(request, "Convertion details Form submitted successfully, In review now.")
+            return redirect("account:account")
+        else:
+            form = CURRENCY_CONVERTOR_Form()
 
         # Converter
         if d["result"] == "success":
@@ -221,6 +274,6 @@ def money_exchange_view(request):
             # return render(request, "index.html", context)
             return render(request, "account/kyc-reg/money-exchange.html", context)
     
-    # return render(request, "core/index.html", {"currency_data":currency_data()})
-      return render(request, "account/kyc-reg/money-exchange.html", {"currency_data":currency_data()})
-    # return render(request, "account/kyc-reg/money-exchange.html")
+     # return render(request, "core/index.html", {"currency_data":currency_data()})
+     return render(request, "account/kyc-reg/money-exchange.html", {"currency_data":currency_data()})
+     # return render(request, "account/kyc-reg/money-exchange.html")

@@ -9,7 +9,9 @@ urlpatterns = [
     path("kyc-reg/", views.kyc_registration, name="kyc-reg"),
     path("sender-form/", views.sender_registration, name="sender-form"),
     path("receiver-form/", views.receiver_registration, name="receiver-form"),
+    path("convert-reg/", views.convert_registration, name="convert-reg"),
     path('account/kyc-reg/money-exchange/', views.money_exchange_view, name='money-exchange'),
 ]
+
 
 

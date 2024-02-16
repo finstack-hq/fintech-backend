@@ -1,5 +1,5 @@
 from django.contrib import admin
-from account.models import Account, KYC, SENDUSER, RECEIVEUSER
+from account.models import Account, KYC, SENDUSER, RECEIVEUSER, CURRENCY_CONVERTOR
 # from userauths.models import User
 from userauths.models import CustomUser
 from import_export.admin import ImportExportModelAdmin
@@ -22,11 +22,16 @@ class RECEIVERAdmin(ImportExportModelAdmin):
     search_fields = ["full_name"]
     list_display = ['user', 'full_name', 'transaction_type', 'transaction_origin', 'other'] 
 
+class CONVERTORAdmin(ImportExportModelAdmin):
+    search_fields = ["full_name"]
+    list_display = ['user', 'full_name',  'amount', 'currency_from', 'currency_to'] 
+
 
 admin.site.register(Account, AccountAdminModel)
 admin.site.register(KYC, KYCAdmin)
 admin.site.register(SENDUSER, SENDERAdmin)
 admin.site.register(RECEIVEUSER, RECEIVERAdmin)
+admin.site.register(CURRENCY_CONVERTOR, CONVERTORAdmin)
 
 
 

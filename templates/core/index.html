@@ -713,7 +713,7 @@
                                             <div class="single-area d-flex align-items-center">
                                                 <div class="left-area">
                                                     <i class="fas fa-minus"></i>
-                                                    <span class="mdr">10.04 USD</span>
+                                                    <span class="mdr">FREE</span>
                                                 </div>
                                                 <div class="right-area">
                                                     <span class="mdr">Our fee</span>
@@ -731,7 +731,7 @@
                                                     <span class="mdr">We’ll Convert</span>
                                                 </div>
                                             </div>
-                                            <div class="single-area d-flex align-items-center">
+                                            <!-- <div class="single-area d-flex align-items-center">
                                                 <div class="left-area">
                                                     <i class="fas fa-times"></i>
                                                     <span class="mdr">1.3947</span>
@@ -739,7 +739,7 @@
                                                 <div class="right-area">
                                                     <span class="mdr highlight">Finstack Rate</span>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                             
@@ -921,9 +921,12 @@
                                 <p class="xlr">Effortlessly transfer, receive, and request, exchange funds online using Finstack. Obtain a tailored solution to suit your business requirements.</p>
                             </div>
                             <div class="bottom-area d-xxl-flex">
-                                <a href="sign-up.html" class="cmn-btn">Open a Free Account</a>
+                                <a href="{% url 'userauths:sign-up' %}" class="cmn-btn">Open a Free Account
+                                    <!-- <i class="fas fa-caret-right"></i> -->
+                                </a>
+                                <!-- <a href="sign-up.html" class="cmn-btn">Open a Free Account</a>  -->
                                 <!-- <a class="cmn-btn active mfp-iframe popupvideo" href="https://www.youtube.com/watch?v=Djz8Nc0Qxwk">See How it Works</a> -->
-                                <a class="cmn-btn active mfp-iframe popupvideo" href="https://www.youtube.com/@FinstackHQ/featured">See How it Works</a>
+                                <a class="cmn-btn active mfp-iframe" href="https://www.youtube.com/@FinstackHQ/featured">See How it Works</a>
                             </div>
                         </div>
                     </div>
@@ -977,7 +980,7 @@
                                         <div class="single-area d-flex align-items-center">
                                             <div class="left-area">
                                                 <i class="fas fa-minus"></i>
-                                                <span class="mdr">10.04 USD</span>
+                                                <span class="mdr">FREE</span>
                                             </div>
                                             <div class="right-area">
                                                 <span class="mdr">Our fee</span>
@@ -995,7 +998,7 @@
                                                 <span class="mdr">We’ll Convert</span>
                                             </div>
                                         </div>
-                                        <div class="single-area d-flex align-items-center">
+                                        <!-- <div class="single-area d-flex align-items-center">
                                             <div class="left-area">
                                                 <i class="fas fa-times"></i>
                                                 <span class="mdr">1.3947</span>
@@ -1003,7 +1006,7 @@
                                             <div class="right-area">
                                                 <span class="mdr highlight">Finstack Rate</span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                         
@@ -1025,9 +1028,14 @@
                                           </div>
                                           <br> 
                                          
-                                         <div class="btn-area mt-40">
-                                            <a href="{% url 'userauths:sign-in' %}" class="login cmn-btn w-100">Get Started</a>
-                                        </div>
+                                         <!-- <div class="btn-area mt-40">
+                                            <a href="{% url 'userauths:sign-in' %}" class="login cmn-btn w-100">CONVERT AND GET STARTED
+                                            </a>
+                                        </div> -->
+
+                                        <div class="select-submit">
+                                            <input class="cmn-btn w-100" type="submit" value="CONVERT">
+                                         </div>
 
                                
                             </form> 
@@ -1543,6 +1551,14 @@
                         </div> -->
                     </div>
                 </div>
+
+                <div class="navbar-area d-flex align-items-center justify-content-center">
+                    <!-- <div class="col-xxl-4 col-xl-5 col-md-6"> -->
+                    <div class="btn-area mt-40 col-xxl-4 col-xl-5 col-md-6">
+                        <a href="{% url 'userauths:legal' %}" class="login cmn-btn w-100">Legal</a>
+                    </div>
+                </div> 
+
             </div>
         </div>
     </div>
