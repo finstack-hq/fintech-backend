@@ -193,16 +193,13 @@ def money_exchange_view(request):
         currency_from = request.POST.get("currency_from")
         currency_to = request.POST.get("currency_to")
 
-        # Get currency exchange rates http://127.0.0.1:8000/drinks
-        url = f"https://open.er-api.com/v6/latest/{currency_from}"
-        # url = f"http://127.0.0.1:8000/drinks/{currency_from}"
-        d = requests.get(url).json()
-
+        # Get currency exchange rates 
+        url = f"https://paylio.wiredmartians.com/api/v1/rates/{currency_from}"
+        response = requests.get(url).json()
         # Converter
-        if d["result"] == "success":
-            
+        if response:
             # Get currency exchange of the target
-            ex_target =  d["rates"][currency_to]
+            ex_target =  response["rates"][currency_to]
 
             # Mltiply by the amount
             result = ex_target * amount
