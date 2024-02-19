@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Paylio - Money Transfer and Online Payments Dashboard HTML Template</title>
+    <title>Finstack - Move Money Faster</title>
 
-    <link rel="shortcut icon" href="{% static 'assets11/images/fav.png' %}" type="image/x-icon">
+    <!-- <link rel="shortcut icon" href="{% static 'assets1/images/fav.png' %}" type="image/x-icon">  -->
     <link rel="stylesheet" href="{% static 'assets1/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets1/css/fontawesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets1/css/jquery-ui.css' %}">
@@ -243,19 +243,22 @@
                             <!-- Edit end -->
                         </ul>
                         <ul class="bottom-item">
-                            <li class="active">
+                            <!-- <li class="active"> -->
+                            <li>
                                 <a href="{% url 'account:account' %}">
                                     <img src="{% static 'assets1/images/icon/account.png' %}" alt="Account"> <span>Account</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">
+                                <a href="{% url 'account:support' %}">
                                     <img src="{% static 'assets1/images/icon/support.png' %}" alt="Support"> <span>Support</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">
+                                <a href="{% url 'userauths:sign-out' %}">
                                     <img src="{% static 'assets1/images/icon/quit.png' %}" alt="Quit"> <span>Quit</span>
+                                   
+                                     <!-- <li><a href="{% url 'userauths:sign-out' %}"><i class="fas fa-sign-out"></i>Quit</a></li> -->
                                 </a>
                             </li>
                         </ul>

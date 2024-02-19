@@ -133,7 +133,7 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active text-center" id="account-tab" data-bs-toggle="tab"
                                         data-bs-target="#account" type="button" role="tab" aria-controls="account" 
-                                        aria-selected="true">Receiver Registration Form</button>
+                                        aria-selected="true">RECEIVING ACCOUNT DETAILS</button>
                                 </li>
                                 
                             </ul>
@@ -164,27 +164,36 @@
                                             </div>
                                         </div>
 
-                                        <br>  <br>  <br> 
+                                        <br> <br>  
 
                                         <div class="col-md-12">
-                                            <label for="fName">Originating:</label>
+                                            <label for="fName">Other:</label>
+                                            <div class="single-input">
+                                               {{form.other}}
+                                            </div>
+                                        </div>
+
+                                        <br>  
+
+                                        <div class="col-md-12">
+                                            <label for="fName">RECEIVING BANK/WALLET/MOMO NAME</label>
                                             <div class="single-input">
                                                {{form.transaction_origin}}
                                             </div>
                                         </div>
 
-                                        <br>  <br>  <br> 
+                                        <br>  
 
                                         <div class="col-md-12">
                                             <div class="single-input">
-                                                <label for="fName">Receiving Account's Owner Name</label>
+                                                <label for="fName">RECEIVING BANK ACCOUNT NAME</label>
                                                 {{form.full_name}}
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="single-input">
-                                                <label for="fName">Receiving Account Number</label>
+                                                <label for="fName">RECEIVING BANK ACCOUNT NUMBER</label>
                                                {{form.account_number}}
                                             </div>
                                         </div>
@@ -354,7 +363,11 @@
                                             
                                             <div class="col-md-12">
                                                 <div class="btn-border">
-                                                    <button class="cmn-btn" type="submit">Submit Receiver Info</button>
+                                                    <button  class="btn-area mt-40">
+                                                        <a href="{% url 'account:sender-form' %}" class="login cmn-btn w-100">Back</a>
+                                                    </button>
+
+                                                    <button class="cmn-btn" type="submit">Submit</button>
                                                 </div>
                                             </div>
                                         </div>

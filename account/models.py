@@ -24,24 +24,38 @@ GENDER = (
 )
 
 TRANSACTION_TYPE = (
-    ("Bank", "Bank"),
-    ("Wallet", "Wallet"),
-    ("Memo Name", "Memo Name"),
-    ("Other", "Other")
+   ("Bank Transfer", "Bank Transfer"),
+   ("Cash Deposit", "Cash Deposit"),
+   ("Mobile Money", "Mobile Money"),
+   ("Other", "Other")
 )
 
 TRANSACTION_ORIGIN = (
-    ("Bank Transfer", "Bank Transfer"),
-    ("Cash Deposit", "Cash Deposit"),
-    ("Mobile Money", "Mobile Money"),
-    ("Other", "Other")
+   ("Bank", "Bank"),
+   ("Wallet", "Wallet"),
+   ("Momo Name", "Momo Name"),
+   ("Other", "Other")
+)
+
+CURRENCY_TO  = (
+   ("European Euro", "European Euro"),
+   ("British pound", "British pound"),
+   ("United States dollar", "United States dollar"),
+)
+
+CURRENCY_FROM = (
+   ("European Euro", "European Euro"),
+   ("British pound", "British pound"),
+   ("United States dollar", "United States dollar"),
 )
 
 
 IDENTITY_TYPE = (
     ("national_id_card", "National ID Card"),
     ("drivers_licence", "Drives Licence"),
-    ("international_passport", "International Passport")
+    ("international_passport", "International Passport"),
+    ("NIN", "NIN"),
+    ("BVN", "BVN")
 )
 
 
@@ -78,6 +92,7 @@ class KYC(models.Model):
     account =  models.OneToOneField(Account, on_delete=models.CASCADE, null=True, blank=True)
     full_name = models.CharField(max_length=1000)
     image = models.ImageField(upload_to="kyc", default="default.jpg")
+    # image = models.ImageField(upload_to="static/images/", null=True, blank=True)
     marrital_status = models.CharField(choices=MARITAL_STATUS, max_length=40)
     gender = models.CharField(choices=GENDER, max_length=40)
     identity_type = models.CharField(choices=IDENTITY_TYPE, max_length=140)
@@ -107,12 +122,13 @@ class SENDUSER(models.Model):
     id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     user =  models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     account =  models.OneToOneField(Account, on_delete=models.CASCADE, null=True, blank=True)
-    full_name = models.CharField(max_length=1000)
+    full_name = models.CharField(max_length=1000, null=True, blank=True)
     # image = models.ImageField(upload_to="kyc", default="default.jpg")
     # marrital_status = models.CharField(choices=MARITAL_STATUS, max_length=40, blank=True, null=True)
-    transaction_type = models.CharField(choices=TRANSACTION_TYPE, max_length=40)
+    transaction_type = models.CharField(choices=TRANSACTION_TYPE, max_length=40, null=True, blank=True)
     # gender = models.CharField(choices=GENDER, max_length=40, blank=True, null=True)
-    transaction_origin = models.CharField(choices=TRANSACTION_ORIGIN, max_length=40)
+    # transaction_origin = models.CharField(choices=TRANSACTION_ORIGIN, max_length=40, null=True, blank=True)
+    transaction_origin = models.CharField(max_length=1000, null=True, blank=True)
     # identity_type = models.CharField(choices=IDENTITY_TYPE, max_length=140, blank=True, null=True)
     # identity_image = models.ImageField(upload_to="sent", null=True, blank=True)
     # date_of_birth = models.DateTimeField(auto_now_add=False, blank=True, null=True)
@@ -124,8 +140,8 @@ class SENDUSER(models.Model):
     # city = models.CharField(max_length=100, blank=True, null=True)
 
     # Contact Detail
-    mobile = models.CharField(max_length=1000)
-    account_number = models.CharField(max_length=1000)
+    mobile = models.CharField(max_length=1000, null=True, blank=True)
+    account_number = models.CharField(max_length=1000, null=True, blank=True)
     # fax = models.CharField(max_length=1000, blank=True, null=True)
     # date = models.DateTimeField(auto_now_add=True, blank=True, null=True )
 
@@ -146,11 +162,55 @@ class RECEIVEUSER(models.Model):
     # marrital_status = models.CharField(choices=MARITAL_STATUS, max_length=40, blank=True, null=True)
     # gender = models.CharField(choices=GENDER, max_length=40, blank=True, null=True)
     transaction_type = models.CharField(choices=TRANSACTION_TYPE, max_length=40, null=True, blank=True)
-    transaction_origin = models.CharField(choices=TRANSACTION_ORIGIN, max_length=40, null=True, blank=True)
+    # transaction_origin = models.CharField(choices=TRANSACTION_ORIGIN, max_length=40, null=True, blank=True)
+    transaction_origin = models.CharField(max_length=1000, null=True, blank=True)
     # identity_type = models.CharField(choices=IDENTITY_TYPE, max_length=140, blank=True, null=True)
     identity_image = models.ImageField(upload_to="receive", null=True, blank=True)
     account_number = models.CharField(max_length=1000, null=True, blank=True)
     other = models.CharField(max_length=100, blank=True, null=True)
+    # date_of_birth = models.DateTimeField(auto_now_add=False, blank=True, null=True)
+    # signature = models.ImageField(upload_to="receive", blank=True, null=True)
+
+    # Address
+    # country = models.CharField(max_length=100, blank=True, null=True)
+    # state = models.CharField(max_length=100, blank=True, null=True)
+    # city = models.CharField(max_length=100, blank=True, null=True)
+
+    # Contact Detail
+    # mobile = models.CharField(max_length=1000, blank=True, null=True)
+    # fax = models.CharField(max_length=1000, blank=True, null=True)
+    # date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+
+
+    def __str__(self):
+        return f"{self.user}"    
+
+    
+    class Meta:
+        ordering = ['-full_name']
+
+class CURRENCY_CONVERTOR(models.Model):
+    id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    user =  models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    account =  models.OneToOneField(Account, on_delete=models.CASCADE, null=True, blank=True)
+    full_name = models.CharField(max_length=1000, null=True, blank=True)
+
+    # result = models.CharField(max_length=1000)
+    amount = models.CharField(max_length=1000, null=True, blank=True)
+    # currency_to = models.CharField(max_length=1000)
+    # currency_from = models.CharField(max_length=1000)
+    currency_from = models.CharField(choices=CURRENCY_FROM, max_length=40, null=True, blank=True)
+    currency_to = models.CharField(choices=CURRENCY_TO, max_length=40, null=True, blank=True)
+    # currency_data = models.CharField(max_length=1000)
+    # image = models.ImageField(upload_to="kyc", default="default.jpg")
+    # marrital_status = models.CharField(choices=MARITAL_STATUS, max_length=40, blank=True, null=True)
+    # gender = models.CharField(choices=GENDER, max_length=40, blank=True, null=True)
+    # transaction_type = models.CharField(choices=TRANSACTION_TYPE, max_length=40, null=True, blank=True)
+    # transaction_origin = models.CharField(choices=TRANSACTION_ORIGIN, max_length=40, null=True, blank=True)
+    # identity_type = models.CharField(choices=IDENTITY_TYPE, max_length=140, blank=True, null=True)
+    # identity_image = models.ImageField(upload_to="receive", null=True, blank=True)
+    # account_number = models.CharField(max_length=1000, null=True, blank=True)
+    # other = models.CharField(max_length=100, blank=True, null=True)
     # date_of_birth = models.DateTimeField(auto_now_add=False, blank=True, null=True)
     # signature = models.ImageField(upload_to="receive", blank=True, null=True)
 

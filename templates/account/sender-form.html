@@ -133,7 +133,7 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active text-center" id="account-tab" data-bs-toggle="tab"
                                         data-bs-target="#account" type="button" role="tab" aria-controls="account"
-                                        aria-selected="true">Sender Registration Form</button>
+                                        aria-selected="true">ORIGINATING ACCOUNT DETAILS</button>
                                 </li>
                                 
                             </ul>
@@ -214,16 +214,6 @@
                                                    {{form.transaction_type}}
                                                 </div>
                                             </div>
-
-                                            <br>  <br>  <br> 
-
-                                            <div class="col-md-12">
-                                                <label for="fName">Originating:</label>
-                                                <div class="single-input">
-                                                   {{form.transaction_origin}}
-                                                </div>
-                                            </div>
-
                                             <br>  <br>  <br> 
 
                                             <div class="col-md-12">
@@ -233,17 +223,27 @@
                                                 </div>
                                             </div>
 
+                                            <div class="col-md-12">
+                                                <label for="fName">ORIGINATING BANK/WALLET/MOMO NAME</label>
+                                                <div class="single-input">
+                                                   {{form.transaction_origin}}
+                                                </div>
+                                            </div>
+
+                                            <br>  <br>  <br> 
 
                                             <div class="col-md-12">
                                                 <div class="single-input">
-                                                    <label for="fName">Full Name</label>
+                                                    <label for="fName">ORIGINATING BANK ACCOUNT NAME</label>
                                                    {{form.full_name}}
                                                 </div>
                                             </div>
 
+                                            <br>  <br>  <br> 
+
                                             <div class="col-md-12">
                                                 <div class="single-input">
-                                                    <label for="fName">Originating Account Number</label>
+                                                    <label for="fName">ORIGINATING BANK ACCOUNT NUMBER</label>
                                                    {{form.account_number}}
                                                 </div>
                                             </div>
@@ -350,11 +350,12 @@
                                             
                                             <div class="col-md-12">
                                                 <div class="btn-border">
-                                                    <button class="cmn-btn" type="submit">Submit Sender Details</button>
-
+                                                
                                                     <button  class="btn-area mt-40">
-                                                        <a href="{% url 'account:receiver-form' %}" class="login cmn-btn w-100">Proceed</a>
+                                                        <a href="{% url 'account:convert-reg' %}" class="login cmn-btn w-100">Back</a>
                                                     </button>
+
+                                                    <button class="cmn-btn" type="submit">Save and Proceed</button>
                                                 </div>
                                             </div>
                                         </div>

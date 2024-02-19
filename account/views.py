@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from account.models import KYC, Account, SENDUSER, RECEIVEUSER
-from account.forms import KYCForm, SENDERForm, RECEIVERForm
+from account.models import KYC, Account, SENDUSER, RECEIVEUSER, CURRENCY_CONVERTOR
+from account.forms import KYCForm, SENDERForm, RECEIVERForm, CURRENCY_CONVERTOR_Form
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from core.forms import CreditCardForm
@@ -82,7 +82,7 @@ def sender_registration(request):
             new_form.account = account
             new_form.save()
             messages.success(request, "Sender Form submitted successfully, In review now.")
-            return redirect("account:account")
+            return redirect("account:receiver-form")
     else:
         form = SENDERForm(instance=sent)
     context = {
@@ -110,7 +110,7 @@ def receiver_registration(request):
             new_form.account = account
             new_form.save()
             messages.success(request, "Receiver Form submitted successfully, In review now.")
-            return redirect("account:account")
+            return redirect("account:dashboard")
     else:
         form = RECEIVERForm(instance=receive)
     context = {
@@ -119,6 +119,36 @@ def receiver_registration(request):
         "receive": receive,
     }
     return render(request, "account/receiver-form.html", context)
+
+
+@login_required
+def convert_registration(request):
+    user = request.user
+    account = Account.objects.get(user=user)
+
+    try:
+        convert = CURRENCY_CONVERTOR.objects.get(user=user)
+    except:
+        convert = None
+    
+    if request.method == "POST":
+        form = CURRENCY_CONVERTOR_Form(request.POST, request.FILES, instance=convert)
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.user = user
+            new_form.account = account
+            new_form.save()
+            messages.success(request, "Convertion Form submitted successfully, In review now.")
+            # return redirect("account:account")
+            return redirect("account:sender-form")
+    else:
+        form = CURRENCY_CONVERTOR_Form(instance=convert)
+    context = {
+        "account": account,
+        "form": form,
+        "convert": convert   }
+    return render(request, "account/convert-reg.html", context)
+
 
 
 def dashboard(request):
@@ -182,9 +212,48 @@ def dashboard(request):
 
 
 
+# def SupportView(request):
+#     if request.method == "POST":
+#         email = request.POST.get("email")
+#         password = request.POST.get("password")
+#     if request.user.is_authenticated:
+#         messages.warning(request, "You are already logged In")
+#         return redirect("account:support")
+        
+#     return render(request, "account/support.html")
+
+@login_required
+def support_view(request):
+    user = request.user
+    account = Account.objects.get(user=user)
+
+    try:
+        convert = CURRENCY_CONVERTOR.objects.get(user=user)
+    except:
+        convert = None
+    
+    if request.method == "POST":
+        form = CURRENCY_CONVERTOR_Form(request.POST, request.FILES, instance=convert)
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.user = user
+            new_form.account = account
+            new_form.save()
+            messages.success(request, "Convertion Form submitted successfully, In review now.")
+            # return redirect("account:account")
+            return redirect("account:sender-form")
+    else:
+        form = CURRENCY_CONVERTOR_Form(instance=convert)
+    context = {
+        "account": account,
+        "form": form,
+        "convert": convert   }
+    return render(request, "account/support.html", context)
 
 
 
+
+@login_required
 def money_exchange_view(request):
       if request.method == "POST":
 

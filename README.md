@@ -1,1 +1,1 @@
-# Python Django project
+# fintech-prod

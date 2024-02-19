@@ -1,0 +1,169 @@
+{% extends "partials/base.html" %}
+{% block content %}
+{% load static %}
+    <!-- Banner Section start -->
+    <section class="banner-section index">
+        <div class="overlay">
+            <div class="shape-area">
+                <img src="{% static 'assets/images/banner-box.png' %}" class="obj-1" alt="image">
+                <img src="{% static 'assets/images/banner-human.png' %}" class="obj-2" alt="image">
+                <img src="{% static 'assets/images/banner-rocket.png' %}" class="obj-3" alt="image">
+                <img src="{% static 'assets/images/banner-clock.png' %}" class="obj-4" alt="image">
+            </div>
+            <div class="banner-content">
+                <div class="container wow fadeInUp">
+                    <!-- <div class="content-shape">
+                        <img src="{% static 'assets/images/banner-wallet.png' %}" class="obj-1" alt="image">
+                    </div> -->
+                <div class="row justify-content-between align-items-center pt-5"> 
+                         <div class="col-lg-12 col-md-12"> 
+                            <div class="main-content">
+                                <div class="top-area section-text">
+                                    <h4 class="sub-title">Finstack Privacy Pledge:</h4> 
+                                    <!-- <h1 class="title">Legal Page Details</h1>  -->
+                                    <p class="xlr">
+                                        Welcome to Finstack – where your privacy is paramount. We're dedicated to ensuring the confidentiality and security of your personal information. Our Privacy Pledge outlines our commitment to protecting your data.
+                                    </p>
+                                   <br>
+                                   <h5 class="sub-title">1. Your Privacy, Our Priority:</h5> 
+                                    <p class="xlr">
+                                        At Finstack, we recognize the significance of your privacy. Rest assured, we handle your information with the utmost care and respect.
+                                    </p> 
+
+                                    <br>
+                                   <h5 class="sub-title">2. Information We Collect:</h5> 
+                                  
+                                    <!-- <p class="xlr px-5"> -->
+                                        <ul class="xlr px-5 " style="list-style-type: disc;">
+                                            <li class="h4">Personal Data:</li> <p  class="xlr">We may collect essential details like your name, contact information, and identification documents to provide our services effectively.
+                                            </p>
+                                            <!-- <br> -->
+                                            <li class="h4">Transaction Details:</li> <p  class="xlr"> Information regarding your transactions, including recipient data and currency exchange rates, helps us streamline our services.
+                                            </p>
+                                            <!-- <br> -->
+                                            <li class="h4">Device Information:</li> <p  class="xlr"> We automatically gather device data, such as IP addresses and browser details, to enhance security and user experience.
+                                            </p>
+                                        </ul>
+
+                                        <br>
+                                        <h5 class="sub-title">3. How We Utilize Your Data:</h5> 
+                                       
+                                         <!-- <p class="xlr px-5"> -->
+                                             <ul class="xlr px-5 " style="list-style-type: disc;">
+                                                 <li class="h4">Enhancing Services:</li> <p  class="xlr"> Your information enables us to tailor our services to your preferences, ensuring a seamless experience.
+                                                 </p>
+                                                 <!-- <br> -->
+                                                 <li class="h4">Compliance and Security:</li> <p  class="xlr"> We use your data to comply with legal obligations and maintain the highest security standards across our platform.
+                                                 </p>
+                                             </ul>
+
+                                             <br>
+                                            <h5 class="sub-title">4. Sharing Your Data:</h5> 
+                                                <p class="xlr">
+                                                    We only share your information with trusted third parties when necessary to provide our services or meet regulatory requirements.
+                                                </p> 
+
+                                                <br>
+                                                <h5 class="sub-title">5. Your Control:</h5> 
+                                               
+                                                 <!-- <p class="xlr px-5"> -->
+                                                     <ul class="xlr px-5 " style="list-style-type: disc;">
+                                                         <li class="h4">Data Management:</li> <p  class="xlr"> You have control over the information you provide. However, certain details may be necessary for accessing specific features.
+                                                         </p>
+                                                         <!-- <br> -->
+                                                         <li class="h4">Account Control:</li> <p  class="xlr"> You can manage your account information at any time, empowering you to maintain control over your data.
+                                                         </p>
+                                                     </ul>
+
+                                                    <br>
+                                                     <h5 class="sub-title">6. Data Retention:</h5> 
+                                                      <p class="xlr">
+                                                        We retain your information for as long as necessary to fulfill the purposes outlined in this pledge, ensuring compliance with legal standards.
+                                                      </p> 
+                                                    
+                                                      <br>
+                                                      <h5 class="sub-title">7. Updates to Our Pledge:</h5> 
+                                                       <p class="xlr">
+                                                        We may update our Privacy Pledge periodically to reflect changes in our practices. Significant changes will be communicated to you promptly.
+                                                       </p> 
+
+                                                       <br>
+                                                       <h5 class="sub-title">8. Your Consent:</h5> 
+                                                        <p class="xlr">
+                                                            By using our services, you consent to the collection, use, and disclosure of your information as outlined in this Privacy Pledge.
+                                                        </p> 
+
+                                                    <br>
+                                                    <br>
+                                                    <h4 class="sub-title">Finstack Terms of Service:</h4> 
+
+                                                    <ul class="xlr px-5 " style="list-style-type: number;">
+                                                        <li class="h5">Introduction:</li> <p  class="lr"> Welcome to Finstack! By accessing and using our services, you agree to adhere to the following terms and conditions, constituting a legal agreement between you and Finstack.
+                                                        </p>
+                                                        <br> 
+                                                        <li class="h5">Acceptance of Terms:</li> <p  class="lr"> Your use of our services signifies your explicit acceptance of these terms and conditions. If you disagree with any part of these terms, please refrain from using our platform.
+                                                        </p>
+                                                        <br> 
+                                                        <li class="h5">Eligibility:</li> <p  class="lr"> You must meet the legal requirements of your jurisdiction to use our services. By using Finstack, you confirm that you have the legal capacity to enter into this agreement.
+                                                        </p>
+                                                        <br> 
+                                                        <li class="h5">Intellectual Property:</li> <p  class="lr">All intellectual property associated with Finstack belongs to us or our licensors. You are granted a limited license to use our services in accordance with these terms.
+                                                        </p>
+                                                        <br> 
+                                                        <li class="h5">User Responsibilities:</li> <p  class="lr">You agree to use Finstack's services responsibly and in compliance with all applicable laws and regulations. You are responsible for maintaining the security of your account credentials.
+                                                        </p>
+                                                        <br> 
+                                                        <li class="h5">Security and Privacy:</li> <p  class="lr">We prioritize the security and privacy of your data. Our commitment to safeguarding your personal information is outlined in our Privacy Pledge.
+                                                        </p>
+                                                        <br> 
+                                                        <li class="h5">Limitation of Liability:</li> <p  class="lr">While we strive to provide excellent services, Finstack is not liable for any damages resulting from your use of our platform.
+                                                        </p>
+                                                        <br> 
+                                                        <li class="h5">Indemnification:</li> <p  class="lr">You agree to indemnify and hold Finstack harmless from any claims arising out of your use of our services or breach of these terms.
+                                                        </p>
+                                                        <br> 
+                                                        <li class="h5">Governing Law and Disputes:</li> <p  class="lr">Any disputes arising from this agreement shall be governed by the laws of Nigeria and resolved through arbitration in Nigeria.
+                                                        </p>
+                                                        <br> 
+                                                        <li class="h5">Amendments:</li> <p  class="lr">Finstack reserves the right to modify these terms at any time. Your continued use of our services constitutes acceptance of any changes.
+                                                        </p>
+                                                        <br> 
+                                                        <li class="h5">Contact Us:</li> <p  class="lr">If you have any questions or concerns about our services or these terms, please don't hesitate to reach out to us.
+                                                        </p>
+                                                        <p  class="lr">Thank you for choosing Finstack. We're committed to providing you with exceptional financial services while safeguarding your privacy and security.
+                                                        </p>
+                                                    </ul>
+                                                    </ul>
+                                        
+                                    <!-- </p>  -->
+
+                                    <!-- <br>
+                                    <p class="xlr">
+                                        Whatsapp: +234 814 790 5150
+                                    </p>
+
+                                    <br>
+                                    <p class="xlr">
+                                        Call: 
+                                    </p>
+
+                                    <br>
+                                    <p class="xlr">
+                                        Email: info@finstack.africa
+                                    </p> -->
+                                </div>
+                                <div class="bottom-area d-xxl-flex">
+                                    <!-- <a href="https://web.facebook.com/finstacktech/" class="cmn-btn">Facebook</a>  -->
+                                    <!-- <a class="cmn-btn active mfp-iframe popupvideo" href="https://web.facebook.com/finstacktech/">Facebook</a> -->
+                                </div> 
+                            </div> 
+                        </div> 
+                </div>
+            </div>
+        </div>
+        
+      
+    </section>
+    <!-- Banner Section end -->
+  
+{% endblock content %}
